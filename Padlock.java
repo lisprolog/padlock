@@ -245,7 +245,7 @@ public class Padlock{
 
         public void fifthRollWheelsForward(){
                 for(int i = 0; i < 10; i++){
-                        turnForthWheelForward();
+                        turnFourthWheelForward();
                         combinationCheck();
                 }
                 for(int i = 0; i < 10; i++){
