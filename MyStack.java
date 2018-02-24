@@ -22,15 +22,46 @@ public class MyStack{
                 return true;
         }
 
-        public String toString(){
+        public boolean add(int n, String s){
+                Node newNode = new Node(n, s);
+                if(head == null){
+                        Node h = new Node(-1);
+                        head = h;
+                        head.setNext(newNode);
+                }else{
+                        pointer = head.getNext();
+                        newNode.setNext(pointer);
+                        head.setNext(newNode);
+                }
+                return true;
+        }
+
+        public String toString1(){
                 String s = "";
                 int n;
+                String m;
                 pointer = head;
                 while(pointer.getNext() != null){
-                        pointer = pointer.getNext();
-                        n = pointer.getElem();
-                        System.out.println(n);
-                        s += n + " ";
+                    pointer = pointer.getNext();
+                    n = pointer.getElem();
+                    m = pointer.getElem2();
+                    //System.out.println(n);
+                    s += n  + " ";
+                }
+                return s;
+        }
+
+        public String toString2(){
+                String s = "";
+                int n;
+                String m;
+                pointer = head;
+                while(pointer.getNext() != null){
+                    pointer = pointer.getNext();
+                    n = pointer.getElem();
+                    m = pointer.getElem2();
+                    //System.out.println(n);
+                    s +=  m + " ";
                 }
                 return s;
         }
