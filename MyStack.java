@@ -12,7 +12,7 @@ public class MyStack{
                 Node newNode = new Node(n);
                 if(head == null){
                         Node h = new Node(-1);
-                        head = h;
+                        head = newNode;
                         head.setNext(newNode);
                 }else{
                         pointer = head.getNext();
@@ -26,7 +26,7 @@ public class MyStack{
                 Node newNode = new Node(n, s);
                 if(head == null){
                         Node h = new Node(-1);
-                        head = h;
+                        head = newNode;
                         head.setNext(newNode);
                 }else{
                         pointer = head.getNext();
@@ -40,7 +40,7 @@ public class MyStack{
                 String s = "";
                 int n;
                 String m;
-                pointer = head;
+                pointer = head.getNext();
                 while(pointer.getNext() != null){
                     pointer = pointer.getNext();
                     n = pointer.getElem();
@@ -56,11 +56,13 @@ public class MyStack{
                 int n;
                 String m;
                 pointer = head;
+                System.out.println(pointer.getElem2());
+                m = pointer.getElem() + ":" + pointer.getElem2();
+                s += m + " ";
                 while(pointer.getNext() != null){
                     pointer = pointer.getNext();
-                    n = pointer.getElem();
                     m = pointer.getElem2();
-                    //System.out.println(n);
+                    System.out.println(m);
                     s +=  m + " ";
                 }
                 return s;
@@ -72,7 +74,7 @@ public class MyStack{
 
         public int turnF(){
                 if(pointer.getElem() == 9){
-                        pointer = head;
+                        pointer = head.getNext();
                 }else{
                         pointer = pointer.getNext();
                 }

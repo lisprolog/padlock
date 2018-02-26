@@ -7,7 +7,7 @@ public class TestStack{
                 MyStack stack03 = new MyStack();
                 MyStack stack04 = new MyStack();
 
-                MyStack stack05 = newe MyStack();
+                MyStack stack05 = new MyStack();
 
                 for(int i = 9; i > -1; i--){
                         stack01.add(i);
@@ -50,6 +50,8 @@ public class TestStack{
                 status = stack01.getTop() + "-" + stack02.getTop() + "-" + stack03.getTop()+ "-" + stack04.getTop();
                 System.out.println("turnB 4: " + status);
 
-                System.out.println(stack05.toString2());
+                //Needs correction
+                //System.out.println(stack05.toString());
+                //System.out.println(stack05.toString2());
         }
 }
