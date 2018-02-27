@@ -12,7 +12,7 @@ public class MyStack{
                 Node newNode = new Node(n);
                 if(head == null){
                         Node h = new Node(-1);
-                        head = newNode;
+                        head = h;//
                         head.setNext(newNode);
                 }else{
                         pointer = head.getNext();
@@ -26,44 +26,38 @@ public class MyStack{
                 Node newNode = new Node(n, s);
                 if(head == null){
                         Node h = new Node(-1);
-                        head = newNode;
+                        head = h;
                         head.setNext(newNode);
                 }else{
                         pointer = head.getNext();
                         newNode.setNext(pointer);
                         head.setNext(newNode);
                 }
+                System.out.println("ADD");
                 return true;
         }
 
-        public String toString1(){
+        public String toString2(){
+                pointer = head.getNext();
                 String s = "";
                 int n;
                 String m;
-                pointer = head.getNext();
                 while(pointer.getNext() != null){
-                    pointer = pointer.getNext();
                     n = pointer.getElem();
-                    m = pointer.getElem2();
-                    //System.out.println(n);
-                    s += n  + " ";
+                    s += n + " ";
+                    pointer = pointer.getNext();
                 }
                 return s;
         }
 
-        public String toString2(){
+        public String toString1(){
+                pointer = head.getNext();
                 String s = "";
-                int n;
                 String m;
-                pointer = head;
-                System.out.println(pointer.getElem2());
-                m = pointer.getElem() + ":" + pointer.getElem2();
-                s += m + " ";
                 while(pointer.getNext() != null){
-                    pointer = pointer.getNext();
                     m = pointer.getElem2();
-                    System.out.println(m);
                     s +=  m + " ";
+                    pointer = pointer.getNext();
                 }
                 return s;
         }

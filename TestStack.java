@@ -32,7 +32,7 @@ public class TestStack{
                 stack02.turnB();
                 stack03.turnB();
                 stack04.turnB();
-                stack05.add(0,"9999");
+                stack05.add(3,"9999");
                 status = stack01.getTop() + "-" + stack02.getTop() + "-" + stack03.getTop() + "-" + stack04.getTop();
                 System.out.println("turnB: " + status);
 
@@ -50,8 +50,13 @@ public class TestStack{
                 status = stack01.getTop() + "-" + stack02.getTop() + "-" + stack03.getTop()+ "-" + stack04.getTop();
                 System.out.println("turnB 4: " + status);
 
-                //Needs correction
-                //System.out.println(stack05.toString());
-                //System.out.println(stack05.toString2());
+                stack05.add(4,"9999");
+                stack05.add(5,"9999");
+                stack05.add(6,"9999");
+
+                System.out.println("toString1:");
+                System.out.println(stack05.toString1());
+                System.out.println("toString2:");
+                System.out.println(stack05.toString2());
         }
 }
