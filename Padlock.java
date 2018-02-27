@@ -156,24 +156,20 @@ public class Padlock{
         public boolean combinationCheck(int a, int b, int c, int d){
                 boolean checkAll = true;
                 if(statusFirstWheel() != a){
-                        //System.out.println(statusFirstWheel() + " vs " + a);
                         checkAll = false;
                 }
                 if(statusSecondWheel() != b){
-                        //System.out.println(statusSecondWheel() + " vs " + b);
                         checkAll = false;
                 }
                 if(statusThirdWheel() != c){
-                        //System.out.println(statusThirdWheel() + " vs " + c);
                         checkAll = false;
                 }
                 if(statusFourthWheel() != d){
-                        //System.out.println(statusFourthWheel() + " vs " + d);
                         checkAll = false;
                 }
                 return checkAll;
         }
-
+        // Brute Force Forward #1
         public void simpleAllStepsForward(int a, int b, int c, int d){
                 int count = 0;
 
@@ -206,7 +202,7 @@ public class Padlock{
                         count++;
                 }
         }
-
+        // Brute Force Backward #2
         public void simpleAllStepsBackward(int a, int b, int c, int d){
                 int count2 = 0;
                 for(int i = 0; i < 10; i++){
@@ -238,11 +234,13 @@ public class Padlock{
                         count2++;
                 }
         }
-        // Fast solution #1
+        // Wheelie forward
         public void rollWheelsForward01(int a, int b, int c, int d){
                 int count = 0;
                 for(int i = 0; i < 10; i++){
+                        System.out.println("statusAllWheels: "+statusAllWheels());                        
                         turnFirstWheelForward();
+                        System.out.println("statusAllWheels: "+statusAllWheels());
                         count++;
                         if(combinationCheck(a, b, c, d)){
                                 saveState(count, statusAllWheels());
@@ -273,11 +271,13 @@ public class Padlock{
 
                 }
         }
-        // Fast solution #2
+        // Wheelie backward
         public int rollWheelsBackward01(int a, int b, int c, int d){
                 int count = 0;
                 for(int i = 0; i < 10; i++){
+                        System.out.println("before: "+ statusAllWheels());
                         turnFirstWheelBackward();
+                        System.out.println("after: "+statusAllWheels());
                         count++;
                         if(combinationCheck(a, b, c, d)){
                                 saveState(count, statusAllWheels());
@@ -306,7 +306,7 @@ public class Padlock{
                 }
                 return count;
         }
-
+        // 
         public int fifthRollWheelsForward(int a, int b, int c, int d){
                 int count = 0;
                 for(int i = 0; i < 10; i++){
@@ -339,7 +339,7 @@ public class Padlock{
                 }
                 return count;
         }
-
+        // 
         public int sixthRollWheelsBackward(int a, int b, int c, int d){
                 int count = 0;
                 for(int i = 0; i < 10; i++){
@@ -375,7 +375,7 @@ public class Padlock{
 
         public void saveState(int c, String state){
                 System.out.println("savestate:" + c  + " " + state);
-                stack05.add( c , state);
+                stack05.add(c, state);
         }
 
         public String toStringResults(){

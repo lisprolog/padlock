@@ -12,7 +12,7 @@ public class MyStack{
                 Node newNode = new Node(n);
                 if(head == null){
                         Node h = new Node(-1);
-                        head = h;//
+                        head = h;
                         head.setNext(newNode);
                 }else{
                         pointer = head.getNext();
@@ -37,33 +37,48 @@ public class MyStack{
                 return true;
         }
 
-        public String toString2(){
-                pointer = head.getNext();
-                String s = "";
-                int n;
-                String m;
-                while(pointer.getNext() != null){
-                    n = pointer.getElem();
-                    s += n + " ";
-                    pointer = pointer.getNext();
-                }
-                return s;
-        }
-
         public String toString1(){
+                if(head == null){
+                        return "empty";
+                }
                 pointer = head.getNext();
                 String s = "";
-                String m;
+                int m;
                 while(pointer.getNext() != null){
-                    m = pointer.getElem2();
+                    m = pointer.getElem();
                     s +=  m + " ";
                     pointer = pointer.getNext();
                 }
+                s += ""+ getTop();
                 return s;
         }
 
+        public String toString2(){
+                if(head == null){
+                        return "empty";
+                }
+                pointer = head.getNext();
+                String s = "";
+                int n;
+                String m = "";
+                while(pointer.getNext() != null){
+                    n = pointer.getElem();
+                    m = pointer.getElem2();
+                    s += n + ":" + m + " ";
+                    pointer = pointer.getNext();
+                }
+                s += getTop() + ":" +getTopElem2();
+                return s;
+        }
+
+
+
         public int getTop(){
                 return pointer.getElem();
+        }
+
+        public String getTopElem2(){
+                return pointer.getElem2();
         }
 
         public int turnF(){
