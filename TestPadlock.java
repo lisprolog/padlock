@@ -14,13 +14,19 @@ public class TestPadlock{
                 System.out.println("TestPadlock4!");
                 Padlock p2 = new Padlock();
                 p2.initPadlock(0,9,9,9);
-                System.out.println(p2.statusAllWheels());
+                System.out.println("status " + p2.statusAllWheels());
                 p2.turnFirstWheelBackward();
-                System.out.println(p2.statusAllWheels());
-                System.out.println("TestPadlock5!");
-                p2.rollWheelsBackward01(9,9,9,9);
-                System.out.println("TestPadlock6!");
-                System.out.println(p2.toStringResults());
-                System.out.println("TestPadlock7!");
+                System.out.println("status " + p2.statusAllWheels());
+                p2.turnFirstWheelBackward();
+                System.out.println("status " + p2.statusAllWheels());
+                p2.turnFirstWheelBackward();
+                System.out.println("status " + p2.statusAllWheels());
+                p2.turnFirstWheelBackward();
+                System.out.println("status " + p2.statusAllWheels());
+                //System.out.println("TestPadlock5!");
+                //p2.rollWheelsBackward01(9,9,9,9);
+                //System.out.println("TestPadlock6!");
+                //System.out.println(p2.toStringResults());
+                //System.out.println("TestPadlock7!");
         }
 }

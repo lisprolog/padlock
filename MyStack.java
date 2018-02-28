@@ -71,8 +71,6 @@ public class MyStack{
                 return s;
         }
 
-
-
         public int getTop(){
                 return pointer.getElem();
         }
@@ -98,7 +96,7 @@ public class MyStack{
         }
 
         public int turnB(){
-                turnF(10);
+                turnF(9);
                 return pointer.getElem();   
         }
 
