@@ -49,7 +49,7 @@ public class MyStack{
                     s +=  m + " ";
                     pointer = pointer.getNext();
                 }
-                s += ""+ getTop();
+                s += ""+ getTop() + "\n";
                 return s;
         }
 
@@ -67,7 +67,7 @@ public class MyStack{
                     s += n + ":" + m + " ";
                     pointer = pointer.getNext();
                 }
-                s += getTop() + ":" +getTopElem2();
+                s += getTop() + ":" +getTopElem2() + "\n";
                 return s;
         }
 
@@ -105,5 +105,41 @@ public class MyStack{
                         turnB();
                 }
                 return pointer.getElem();   
+        }
+
+        public String getTurns(int turns){
+                if(head == null){
+                        return "empty";
+                }
+                pointer = head.getNext();
+                String s = "";
+                int n;
+                String m = "";
+                while(pointer.getNext() != null){
+                    n = pointer.getElem();
+                    m = pointer.getElem2();
+                    if(n == turns){
+                        s += n + ":" + m + "\n";
+                    }
+                    pointer = pointer.getNext();
+                }
+                n = pointer.getElem();
+                m = pointer.getElem2();
+                if(n == turns){
+                    s += n + ":" +m + "\n";
+                }
+                if(s.equals("")){
+                        return "empty";
+                }else{
+                        return s;
+                }  
+        }
+
+        public String getMinTurns(int n){
+                String result = "";
+                for(int i = 0; i <= n; i++){
+                        result += getTurns(i);
+                }
+                return result;
         }
 }

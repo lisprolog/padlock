@@ -155,6 +155,8 @@ public class Padlock{
 
         public boolean combinationCheck(int a, int b, int c, int d){
                 boolean checkAll = true;
+        /*
+                // this one is for chosen padlock digits
                 if(statusFirstWheel() != a){
                         checkAll = false;
                 }
@@ -167,10 +169,18 @@ public class Padlock{
                 if(statusFourthWheel() != d){
                         checkAll = false;
                 }
+        */
+                // to make sure all digits are identical
+                if(statusFirstWheel() == statusSecondWheel() && statusThirdWheel() == statusFourthWheel() && statusFirstWheel() == statusFourthWheel()){
+                        checkAll = true;
+                }else{
+                        checkAll = false;
+                }
                 return checkAll;
         }
-        // Brute Force Forward #1
-        public void simpleAllStepsForward(int a, int b, int c, int d){
+
+        // Brute Force Forward #1 start Wheel #1
+        public int simpleAllStepsForward01(int a, int b, int c, int d){
                 int count = 0;
 
                 for(int i = 0; i < 10; i++){
@@ -201,46 +211,255 @@ public class Padlock{
                         turnFourthWheelForward();
                         count++;
                 }
+                return count;
         }
-        // Brute Force Backward #2
-        public void simpleAllStepsBackward(int a, int b, int c, int d){
-                int count2 = 0;
+
+        // Brute Force Forward #2 start Wheel #2
+        public int simpleAllStepsForward02(int a, int b, int c, int d){
+                int count = 0;
+
                 for(int i = 0; i < 10; i++){
                         for(int j = 0; j < 10; j++){
                                 for(int k = 0; k < 10; k++){
                                         for(int l = 0; l < 10; l++){
                                                 if(combinationCheck(a, b, c, d)){
-                                                        saveState(count2, statusAllWheels());
+                                                        saveState(count, statusAllWheels());
                                                 }
-                                                turnFirstWheelBackward();
-                                                count2++;
+                                                turnSecondWheelForward();
+                                                count++;
                                         }
                                         if(combinationCheck(a, b, c, d)){
-                                                saveState(count2, statusAllWheels());
+                                                saveState(count, statusAllWheels());
                                         }
-                                        turnSecondWheelBackward();
-                                        count2++;
+                                        turnThirdWheelForward();
+                                        count++;
                                 }
                                 if(combinationCheck(a, b, c, d)){
-                                        saveState(count2, statusAllWheels());
+                                        saveState(count, statusAllWheels());
                                 }
-                                turnThirdWheelBackward();
-                                count2++;
+                                turnFourthWheelForward();
+                                count++;
                         }
                         if(combinationCheck(a, b, c, d)){
-                                saveState(count2, statusAllWheels());
+                                saveState(count, statusAllWheels());
                         }
-                        turnFourthWheelBackward();
-                        count2++;
+                        turnFirstWheelForward();
+                        count++;
                 }
+                return count;
         }
-        // Wheelie forward
-        public void rollWheelsForward01(int a, int b, int c, int d){
+
+        // Brute Force Forward #3 start Wheel #3
+        public int simpleAllStepsForward03(int a, int b, int c, int d){
+                int count = 0;
+
+                for(int i = 0; i < 10; i++){
+                        for(int j = 0; j < 10; j++){
+                                for(int k = 0; k < 10; k++){
+                                        for(int l = 0; l < 10; l++){
+                                                if(combinationCheck(a, b, c, d)){
+                                                        saveState(count, statusAllWheels());
+                                                }
+                                                turnThirdWheelForward();
+                                                count++;
+                                        }
+                                        if(combinationCheck(a, b, c, d)){
+                                                saveState(count, statusAllWheels());
+                                        }
+                                        turnFourthWheelForward();
+                                        count++;
+                                }
+                                if(combinationCheck(a, b, c, d)){
+                                        saveState(count, statusAllWheels());
+                                }
+                                turnFirstWheelForward();
+                                count++;
+                        }
+                        if(combinationCheck(a, b, c, d)){
+                                saveState(count, statusAllWheels());
+                        }
+                        turnSecondWheelForward();
+                        count++;
+                }
+                return count;
+        }
+
+        // Brute Force Forward #4 start Wheel #4
+        public int simpleAllStepsForward04(int a, int b, int c, int d){
+                int count = 0;
+
+                for(int i = 0; i < 10; i++){
+                        for(int j = 0; j < 10; j++){
+                                for(int k = 0; k < 10; k++){
+                                        for(int l = 0; l < 10; l++){
+                                                if(combinationCheck(a, b, c, d)){
+                                                        saveState(count, statusAllWheels());
+                                                }
+                                                turnFourthWheelForward();
+                                                count++;
+                                        }
+                                        if(combinationCheck(a, b, c, d)){
+                                                saveState(count, statusAllWheels());
+                                        }
+                                        turnFirstWheelForward();
+                                        count++;
+                                }
+                                if(combinationCheck(a, b, c, d)){
+                                        saveState(count, statusAllWheels());
+                                }
+                                turnSecondWheelForward();
+                                count++;
+                        }
+                        if(combinationCheck(a, b, c, d)){
+                                saveState(count, statusAllWheels());
+                        }
+                        turnThirdWheelForward();
+                        count++;
+                }
+                return count;
+        }
+
+        // Brute Force Backward #1 start wheel #1
+        public int simpleAllStepsBackward01(int a, int b, int c, int d){
                 int count = 0;
                 for(int i = 0; i < 10; i++){
-                        System.out.println("statusAllWheels: "+statusAllWheels());                        
+                        for(int j = 0; j < 10; j++){
+                                for(int k = 0; k < 10; k++){
+                                        for(int l = 0; l < 10; l++){
+                                                if(combinationCheck(a, b, c, d)){
+                                                        saveState(count, statusAllWheels());
+                                                }
+                                                turnFirstWheelBackward();
+                                                count++;
+                                        }
+                                        if(combinationCheck(a, b, c, d)){
+                                                saveState(count, statusAllWheels());
+                                        }
+                                        turnSecondWheelBackward();
+                                        count++;
+                                }
+                                if(combinationCheck(a, b, c, d)){
+                                        saveState(count, statusAllWheels());
+                                }
+                                turnThirdWheelBackward();
+                                count++;
+                        }
+                        if(combinationCheck(a, b, c, d)){
+                                saveState(count, statusAllWheels());
+                        }
+                        turnFourthWheelBackward();
+                        count++;
+                }
+                return count;
+        }
+
+        // Brute Force Backward #2 start wheel #2
+        public int simpleAllStepsBackward02(int a, int b, int c, int d){
+                int count = 0;
+                for(int i = 0; i < 10; i++){
+                        for(int j = 0; j < 10; j++){
+                                for(int k = 0; k < 10; k++){
+                                        for(int l = 0; l < 10; l++){
+                                                if(combinationCheck(a, b, c, d)){
+                                                        saveState(count, statusAllWheels());
+                                                }
+                                                turnSecondWheelBackward();
+                                                count++;
+                                        }
+                                        if(combinationCheck(a, b, c, d)){
+                                                saveState(count, statusAllWheels());
+                                        }
+                                        turnThirdWheelBackward();
+                                        count++;
+                                }
+                                if(combinationCheck(a, b, c, d)){
+                                        saveState(count, statusAllWheels());
+                                }
+                                turnFourthWheelBackward();
+                                count++;
+                        }
+                        if(combinationCheck(a, b, c, d)){
+                                saveState(count, statusAllWheels());
+                        }
+                        turnFirstWheelBackward();
+                        count++;
+                }
+                return count;
+        }
+
+        // Brute Force Backward #3 start wheel #3
+        public int simpleAllStepsBackward03(int a, int b, int c, int d){
+                int count = 0;
+                for(int i = 0; i < 10; i++){
+                        for(int j = 0; j < 10; j++){
+                                for(int k = 0; k < 10; k++){
+                                        for(int l = 0; l < 10; l++){
+                                                if(combinationCheck(a, b, c, d)){
+                                                        saveState(count, statusAllWheels());
+                                                }
+                                                turnThirdWheelBackward();
+                                                count++;
+                                        }
+                                        if(combinationCheck(a, b, c, d)){
+                                                saveState(count, statusAllWheels());
+                                        }
+                                        turnFourthWheelBackward();
+                                        count++;
+                                }
+                                if(combinationCheck(a, b, c, d)){
+                                        saveState(count, statusAllWheels());
+                                }
+                                turnFirstWheelBackward();
+                                count++;
+                        }
+                        if(combinationCheck(a, b, c, d)){
+                                saveState(count, statusAllWheels());
+                        }
+                        turnSecondWheelBackward();
+                        count++;
+                }
+                return count;
+        }
+
+        // Brute Force Backward #4 start wheel #4
+        public int simpleAllStepsBackward04(int a, int b, int c, int d){
+                int count = 0;
+                for(int i = 0; i < 10; i++){
+                        for(int j = 0; j < 10; j++){
+                                for(int k = 0; k < 10; k++){
+                                        for(int l = 0; l < 10; l++){
+                                                if(combinationCheck(a, b, c, d)){
+                                                        saveState(count, statusAllWheels());
+                                                }
+                                                turnFourthWheelBackward();
+                                                count++;
+                                        }
+                                        if(combinationCheck(a, b, c, d)){
+                                                saveState(count, statusAllWheels());
+                                        }
+                                        turnFirstWheelBackward();
+                                        count++;
+                                }
+                                if(combinationCheck(a, b, c, d)){
+                                        saveState(count, statusAllWheels());
+                                }
+                                turnSecondWheelBackward();
+                                count++;
+                        }
+                        if(combinationCheck(a, b, c, d)){
+                                saveState(count, statusAllWheels());
+                        }
+                        turnThirdWheelBackward();
+                        count++;
+                }
+                return count;
+        }
+
+        // Wheelie forward 01 start wheel #1
+        public int rollWheelsForward01(int a, int b, int c, int d){
+                int count = 0;
+                for(int i = 0; i < 10; i++){                        
                         turnFirstWheelForward();
-                        System.out.println("statusAllWheels: "+statusAllWheels());
                         count++;
                         if(combinationCheck(a, b, c, d)){
                                 saveState(count, statusAllWheels());
@@ -270,14 +489,125 @@ public class Padlock{
                         }
 
                 }
+                return count;
         }
-        // Wheelie backward
+
+        // Wheelie forward 02 start wheel #2
+        public int rollWheelsForward02(int a, int b, int c, int d){
+                int count = 0;
+                for(int i = 0; i < 10; i++){                        
+                        turnSecondWheelForward();
+                        count++;
+                        if(combinationCheck(a, b, c, d)){
+                                saveState(count, statusAllWheels());
+                        }
+
+                }
+                for(int i = 0; i < 10; i++){
+                        turnThirdWheelForward();
+                        count++;
+                        if(combinationCheck(a, b, c, d)){
+                                saveState(count, statusAllWheels());
+                        }
+
+                }
+                for(int i = 0; i < 10; i++){
+                        turnFourthWheelForward();
+                        if(combinationCheck(a, b, c, d)){
+                                saveState(count, statusAllWheels());
+                        }
+                        count++;
+                }
+                for(int i = 0; i < 10; i++){
+                        turnFirstWheelForward();
+                        count++;
+                        if(combinationCheck(a, b, c, d)){
+                                saveState(count, statusAllWheels());
+                        }
+
+                }
+                return count;
+        }
+
+        // Wheelie forward 03 start wheel #3
+        public int rollWheelsForward03(int a, int b, int c, int d){
+                int count = 0;
+                for(int i = 0; i < 10; i++){                        
+                        turnThirdWheelForward();
+                        count++;
+                        if(combinationCheck(a, b, c, d)){
+                                saveState(count, statusAllWheels());
+                        }
+
+                }
+                for(int i = 0; i < 10; i++){
+                        turnFourthWheelForward();
+                        count++;
+                        if(combinationCheck(a, b, c, d)){
+                                saveState(count, statusAllWheels());
+                        }
+
+                }
+                for(int i = 0; i < 10; i++){
+                        turnFirstWheelForward();
+                        if(combinationCheck(a, b, c, d)){
+                                saveState(count, statusAllWheels());
+                        }
+                        count++;
+                }
+                for(int i = 0; i < 10; i++){
+                        turnSecondWheelForward();
+                        count++;
+                        if(combinationCheck(a, b, c, d)){
+                                saveState(count, statusAllWheels());
+                        }
+
+                }
+                return count;
+        }
+
+        // Wheelie forward 04 start wheel #4
+        public int rollWheelsForward04(int a, int b, int c, int d){
+                int count = 0;
+                for(int i = 0; i < 10; i++){                        
+                        turnFourthWheelForward();
+                        count++;
+                        if(combinationCheck(a, b, c, d)){
+                                saveState(count, statusAllWheels());
+                        }
+
+                }
+                for(int i = 0; i < 10; i++){
+                        turnFirstWheelForward();
+                        count++;
+                        if(combinationCheck(a, b, c, d)){
+                                saveState(count, statusAllWheels());
+                        }
+
+                }
+                for(int i = 0; i < 10; i++){
+                        turnSecondWheelForward();
+                        if(combinationCheck(a, b, c, d)){
+                                saveState(count, statusAllWheels());
+                        }
+                        count++;
+                }
+                for(int i = 0; i < 10; i++){
+                        turnThirdWheelForward();
+                        count++;
+                        if(combinationCheck(a, b, c, d)){
+                                saveState(count, statusAllWheels());
+                        }
+
+                }
+                return count;
+        }
+
+        // Wheelie backward 1 start wheel #1
         public int rollWheelsBackward01(int a, int b, int c, int d){
                 int count = 0;
                 for(int i = 0; i < 10; i++){
-                        System.out.println("before: "+ statusAllWheels());
                         turnFirstWheelBackward();
-                        System.out.println("after: "+statusAllWheels());
                         count++;
                         if(combinationCheck(a, b, c, d)){
                                 saveState(count, statusAllWheels());
@@ -306,7 +636,109 @@ public class Padlock{
                 }
                 return count;
         }
-        // 
+
+        // Wheelie backward 2 start wheel #2
+        public int rollWheelsBackward02(int a, int b, int c, int d){
+                int count = 0;
+                for(int i = 0; i < 10; i++){
+                        turnSecondWheelBackward();
+                        count++;
+                        if(combinationCheck(a, b, c, d)){
+                                saveState(count, statusAllWheels());
+                        }
+                }
+                for(int i = 0; i < 10; i++){
+                        turnThirdWheelBackward();
+                        count++;
+                        if(combinationCheck(a, b, c, d)){
+                                saveState(count, statusAllWheels());
+                        }
+                }
+                for(int i = 0; i < 10; i++){
+                        turnFourthWheelBackward();
+                        count++;
+                        if(combinationCheck(a, b, c, d)){
+                                saveState(count, statusAllWheels());
+                        }
+                }
+                for(int i = 0; i < 10; i++){
+                        turnFirstWheelBackward();
+                        count++;
+                        if(combinationCheck(a, b, c, d)){
+                                saveState(count, statusAllWheels());
+                        }
+                }
+                return count;
+        }
+
+        // Wheelie backward 3 start wheel #3
+        public int rollWheelsBackward03(int a, int b, int c, int d){
+                int count = 0;
+                for(int i = 0; i < 10; i++){
+                        turnThirdWheelBackward();
+                        count++;
+                        if(combinationCheck(a, b, c, d)){
+                                saveState(count, statusAllWheels());
+                        }
+                }
+                for(int i = 0; i < 10; i++){
+                        turnFourthWheelBackward();
+                        count++;
+                        if(combinationCheck(a, b, c, d)){
+                                saveState(count, statusAllWheels());
+                        }
+                }
+                for(int i = 0; i < 10; i++){
+                        turnFirstWheelBackward();
+                        count++;
+                        if(combinationCheck(a, b, c, d)){
+                                saveState(count, statusAllWheels());
+                        }
+                }
+                for(int i = 0; i < 10; i++){
+                        turnSecondWheelBackward();
+                        count++;
+                        if(combinationCheck(a, b, c, d)){
+                                saveState(count, statusAllWheels());
+                        }
+                }
+                return count;
+        }
+
+        // Wheelie backward 4 start wheel #4
+        public int rollWheelsBackward04(int a, int b, int c, int d){
+                int count = 0;
+                for(int i = 0; i < 10; i++){
+                        turnFourthWheelBackward();
+                        count++;
+                        if(combinationCheck(a, b, c, d)){
+                                saveState(count, statusAllWheels());
+                        }
+                }
+                for(int i = 0; i < 10; i++){
+                        turnFirstWheelBackward();
+                        count++;
+                        if(combinationCheck(a, b, c, d)){
+                                saveState(count, statusAllWheels());
+                        }
+                }
+                for(int i = 0; i < 10; i++){
+                        turnSecondWheelBackward();
+                        count++;
+                        if(combinationCheck(a, b, c, d)){
+                                saveState(count, statusAllWheels());
+                        }
+                }
+                for(int i = 0; i < 10; i++){
+                        turnFirstWheelBackward();
+                        count++;
+                        if(combinationCheck(a, b, c, d)){
+                                saveState(count, statusAllWheels());
+                        }
+                }
+                return count;
+        }
+
         public int fifthRollWheelsForward(int a, int b, int c, int d){
                 int count = 0;
                 for(int i = 0; i < 10; i++){
@@ -339,7 +771,7 @@ public class Padlock{
                 }
                 return count;
         }
-        // 
+
         public int sixthRollWheelsBackward(int a, int b, int c, int d){
                 int count = 0;
                 for(int i = 0; i < 10; i++){
@@ -380,5 +812,10 @@ public class Padlock{
 
         public String toStringResults(){
                 return stack05.toString2();
+        }
+
+        //
+        public String getMinTurns(int turns){
+                return stack05.getMinTurns(turns);
         }
 }
