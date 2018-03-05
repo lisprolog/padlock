@@ -136,9 +136,13 @@ public class MyStack{
         }
 
         public String getMinTurns(int n){
+                String temp = "";
                 String result = "";
                 for(int i = 0; i <= n; i++){
-                        result += getTurns(i);
+                        temp = getTurns(i);
+                        if(!temp.equals("empty")){
+                                result += getTurns(i);
+                        }
                 }
                 return result;
         }

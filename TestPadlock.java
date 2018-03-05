@@ -48,7 +48,7 @@ public class TestPadlock{
                 p2.rollWheelsBackward03(w,x,y,z);
                 p2.rollWheelsBackward04(w,x,y,z);
 
-                System.out.println(p2.toStringResults());
+                //System.out.println(p2.toStringResults());
                 System.out.println(p2.getMinTurns(24));
         }
 }
