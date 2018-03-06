@@ -126,7 +126,7 @@ public class MyStack{
                 n = pointer.getElem();
                 m = pointer.getElem2();
                 if(n == turns){
-                    s += n + ":" +m + "\n";
+                    s += n + ":" + m + "\n";
                 }
                 if(s.equals("")){
                         return "empty";

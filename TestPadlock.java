@@ -11,8 +11,9 @@ public class TestPadlock{
                 System.out.println(p1.toStringResults());
                 System.out.println("TestPadlock4!");
 */
-                //System.out.println("TestPadlock5!");
+                Padlock p1 = new Padlock();
                 Padlock p2 = new Padlock();
+                Padlock p3 = new Padlock();
 //              important for our initalisation
                 int a = 1;
                 int b = 1;
@@ -24,31 +25,17 @@ public class TestPadlock{
                 int x = 9;
                 int y = 9;
                 int z = 9;
+                p1.initPadlock(a,b,c,d);
                 p2.initPadlock(a,b,c,d);
-/*
-                p2.turnFirstWheelBackward();
-                p2.turnFirstWheelBackward();
-                p2.turnFirstWheelBackward();
-                p2.turnFirstWheelBackward();
-*/
-                p2.simpleAllStepsForward01(w,x,y,z);
-                p2.simpleAllStepsForward02(w,x,y,z);
-                p2.simpleAllStepsForward03(w,x,y,z);
-                p2.simpleAllStepsForward04(w,x,y,z);
-                p2.simpleAllStepsBackward01(w,x,y,z);
-                p2.simpleAllStepsBackward02(w,x,y,z);
-                p2.simpleAllStepsBackward03(w,x,y,z);
-                p2.simpleAllStepsBackward04(w,x,y,z);
-                p2.rollWheelsForward01(w,x,y,z);
-                p2.rollWheelsForward02(w,x,y,z);
-                p2.rollWheelsForward03(w,x,y,z);
-                p2.rollWheelsForward04(w,x,y,z);
-                p2.rollWheelsBackward01(w,x,y,z);
-                p2.rollWheelsBackward02(w,x,y,z);
-                p2.rollWheelsBackward03(w,x,y,z);
-                p2.rollWheelsBackward04(w,x,y,z);
+                p3.initPadlock(a,b,c,d);
 
-                //System.out.println(p2.toStringResults());
-                System.out.println(p2.getMinTurns(24));
+                System.out.println(p2.statusAllWheels()); 
+                p1.rollWheelsBackward01b(1,1,1,1);
+                p2.rollWheelsForward03b(1,1,1,1);
+                p3.rollWheelsMix01(1,1,1,1);
+
+                System.out.println("p1: " + p1.getMinTurns(4));
+                System.out.println("p2: " + p2.getMinTurns(4));
+                System.out.println("p3: " + p3.getMinTurns(4));
         }
 }
