@@ -895,4 +895,154 @@ public class Padlock{
         public String getMinTurns(int turns){
                 return stack05.getMinTurns(turns);
         }
+
+        // FRONT
+        public int sixteenStates00(int steps, int a, int b, int c, int d){
+                int count = 0;
+                
+                turnFirstWheelForward(steps);
+                combinationCheck(a,b,c,d);
+                turnSecondWheelForward(steps);
+                combinationCheck(a,b,c,d);
+                turnThirdWheelForward(steps);
+                combinationCheck(a,b,c,d);
+                turnFourthWheelForward(steps);
+                combinationCheck(a,b,c,d);
+                return count;
+        }
+
+        public int sixteenStates01(int a, int b, int c, int d){
+                int count = 0;
+                turnFirstWheelForward();
+                turnSecondWheelForward();
+                turnThirdWheelForward();
+                turnFourthWheelBackward();
+                return count;
+        }
+
+        public int sixteenStates02(int a, int b, int c, int d){
+                int count = 0;
+                turnFirstWheelForward();
+                turnSecondWheelForward();
+                turnThirdWheelBackward();
+                turnFourthWheelForward();
+                return count;
+        }
+
+        public int sixteenStates03(int a, int b, int c, int d){
+                int count = 0;
+                turnFirstWheelForward();
+                turnSecondWheelForward();
+                turnThirdWheelBackward();
+                turnFourthWheelBackward();
+                return count;
+        }
+
+        public int sixteenStates04(int a, int b, int c, int d){
+                int count = 0;
+                turnFirstWheelForward();
+                turnSecondWheelBackward();
+                turnThirdWheelForward();
+                turnFourthWheelForward();
+                return count;
+        }
+
+        public int sixteenStates05(int a, int b, int c, int d){
+                int count = 0;
+                turnFirstWheelForward();
+                turnSecondWheelBackward();
+                turnThirdWheelForward();
+                turnFourthWheelBackward();
+                return count;
+        }
+
+        public int sixteenStates06(int a, int b, int c, int d){
+                int count = 0;
+                turnFirstWheelForward();
+                turnSecondWheelBackward();
+                turnThirdWheelBackward();
+                turnFourthWheelForward();
+                return count;
+        }
+
+        public int sixteenStates07(int a, int b, int c, int d){
+                int count = 0;
+                turnFirstWheelForward();
+                turnSecondWheelBackward();
+                turnThirdWheelBackward();
+                turnFourthWheelBackward();
+                return count;
+        }
+
+        public int sixteenStates08(int a, int b, int c, int d){
+                int count = 0;
+                turnFirstWheelBackward();
+                turnSecondWheelForward();
+                turnThirdWheelForward();
+                turnFourthWheelForward();
+                return count;
+        }
+
+        public int sixteenStates09(int a, int b, int c, int d){
+                int count = 0;
+                turnFirstWheelBackward();
+                turnSecondWheelForward();
+                turnThirdWheelForward();
+                turnFourthWheelBackward();
+                return count;
+        }
+
+        public int sixteenStates10(int a, int b, int c, int d){
+                int count = 0;
+                turnFirstWheelBackward();
+                turnSecondWheelForward();
+                turnThirdWheelBackward();
+                turnFourthWheelForward();
+                return count;
+        }
+
+        public int sixteenStates11(int a, int b, int c, int d){
+                int count = 0;
+                turnFirstWheelBackward();
+                turnSecondWheelForward();
+                turnThirdWheelBackward();
+                turnFourthWheelBackward();
+                return count;
+        }
+
+        public int sixteenStates12(int a, int b, int c, int d){
+                int count = 0;
+                turnFirstWheelBackward();
+                turnSecondWheelBackward();
+                turnThirdWheelForward();
+                turnFourthWheelForward();
+                return count;
+        }
+
+        public int sixteenStates13(int a, int b, int c, int d){
+                int count = 0;
+                turnFirstWheelBackward();
+                turnSecondWheelBackward();
+                turnThirdWheelForward();
+                turnFourthWheelBackward();
+                return count;
+        }
+
+        public int sixteenStates14(int a, int b, int c, int d){
+                int count = 0;
+                turnFirstWheelBackward();
+                turnSecondWheelBackward();
+                turnThirdWheelBackward();
+                turnFourthWheelForward();
+                return count;
+        }
+
+        public int sixteenStates15(int a, int b, int c, int d){
+                int count = 0;
+                turnFirstWheelBackward();
+                turnSecondWheelBackward();
+                turnThirdWheelBackward();
+                turnFourthWheelBackward();
+                return count;
+        }
 }
