@@ -5,7 +5,9 @@ public class Padlock{
         private MyStack stack03;        //wheel 3
         private MyStack stack04;        //wheel 4
         private MyStack stack05;        //saved results
+	private int count = 0;
 
+	//initializes 4 wheels and a stack to save counts
         public Padlock(){
                 stack01 = new MyStack();
                 stack02 = new MyStack();
@@ -28,6 +30,9 @@ public class Padlock{
                 setThirdWheel(c);
                 setFourthWheel(d);
                 System.out.println("initialisiert: " + statusAllWheels());
+		if(combinationCheck(a, b, c, d)){
+			saveState(count, statusAllWheels());
+		}
         }
 
         public void turnFirstWheelForward(){
@@ -181,7 +186,7 @@ public class Padlock{
 
         // Brute Force Forward #1 start Wheel #1
         public int simpleAllStepsForward01(int a, int b, int c, int d){
-                int count = 0;
+                count = 0;
 
                 for(int i = 0; i < 10; i++){
                         for(int j = 0; j < 10; j++){
@@ -216,7 +221,7 @@ public class Padlock{
 
         // Brute Force Forward #2 start Wheel #2
         public int simpleAllStepsForward02(int a, int b, int c, int d){
-                int count = 0;
+                count = 0;
 
                 for(int i = 0; i < 10; i++){
                         for(int j = 0; j < 10; j++){
@@ -251,7 +256,7 @@ public class Padlock{
 
         // Brute Force Forward #3 start Wheel #3
         public int simpleAllStepsForward03(int a, int b, int c, int d){
-                int count = 0;
+                count = 0;
 
                 for(int i = 0; i < 10; i++){
                         for(int j = 0; j < 10; j++){
@@ -286,7 +291,7 @@ public class Padlock{
 
         // Brute Force Forward #4 start Wheel #4
         public int simpleAllStepsForward04(int a, int b, int c, int d){
-                int count = 0;
+                count = 0;
 
                 for(int i = 0; i < 10; i++){
                         for(int j = 0; j < 10; j++){
@@ -321,7 +326,7 @@ public class Padlock{
 
         // Brute Force Backward #1 start wheel #1
         public int simpleAllStepsBackward01(int a, int b, int c, int d){
-                int count = 0;
+                count = 0;
                 for(int i = 0; i < 10; i++){
                         for(int j = 0; j < 10; j++){
                                 for(int k = 0; k < 10; k++){
@@ -355,7 +360,7 @@ public class Padlock{
 
         // Brute Force Backward #2 start wheel #2
         public int simpleAllStepsBackward02(int a, int b, int c, int d){
-                int count = 0;
+                count = 0;
                 for(int i = 0; i < 10; i++){
                         for(int j = 0; j < 10; j++){
                                 for(int k = 0; k < 10; k++){
@@ -389,7 +394,7 @@ public class Padlock{
 
         // Brute Force Backward #3 start wheel #3
         public int simpleAllStepsBackward03(int a, int b, int c, int d){
-                int count = 0;
+                count = 0;
                 for(int i = 0; i < 10; i++){
                         for(int j = 0; j < 10; j++){
                                 for(int k = 0; k < 10; k++){
@@ -423,7 +428,7 @@ public class Padlock{
 
         // Brute Force Backward #4 start wheel #4
         public int simpleAllStepsBackward04(int a, int b, int c, int d){
-                int count = 0;
+                count = 0;
                 for(int i = 0; i < 10; i++){
                         for(int j = 0; j < 10; j++){
                                 for(int k = 0; k < 10; k++){
@@ -457,7 +462,7 @@ public class Padlock{
 
         // Wheelie forward 01 start wheel #1
         public int rollWheelsForward01(int a, int b, int c, int d){
-                int count = 0;
+                count = 0;
                 for(int i = 0; i < 10; i++){                        
                         turnFirstWheelForward();
                         count++;
@@ -494,7 +499,7 @@ public class Padlock{
 
         // Wheelie forward 01 start wheel #1 Steps 2
         public int rollWheelsForward01b(int a, int b, int c, int d){
-                int count = 0;
+                count = 0;
                 for(int i = 0; i < 2; i++){                        
                         turnFirstWheelForward();
                         count++;
@@ -531,7 +536,7 @@ public class Padlock{
 
         // Wheelie forward 02 start wheel #2
         public int rollWheelsForward02(int a, int b, int c, int d){
-                int count = 0;
+                count = 0;
                 for(int i = 0; i < 10; i++){                        
                         turnSecondWheelForward();
                         count++;
@@ -568,7 +573,7 @@ public class Padlock{
 
         // Wheelie forward 03 start wheel #3
         public int rollWheelsForward03(int a, int b, int c, int d){
-                int count = 0;
+                count = 0;
                 for(int i = 0; i < 10; i++){                        
                         turnThirdWheelForward();
                         count++;
@@ -605,7 +610,7 @@ public class Padlock{
 
         // Wheelie forward 03 start wheel #3 Steps 2
         public int rollWheelsForward03b(int a, int b, int c, int d){
-                int count = 0;
+                count = 0;
                 for(int i = 0; i < 2; i++){                        
                         turnThirdWheelForward();
                         count++;
@@ -642,7 +647,7 @@ public class Padlock{
 
         // Wheelie forward 04 start wheel #4
         public int rollWheelsForward04(int a, int b, int c, int d){
-                int count = 0;
+                count = 0;
                 for(int i = 0; i < 10; i++){                        
                         turnFourthWheelForward();
                         count++;
@@ -679,7 +684,7 @@ public class Padlock{
 
         // Wheelie backward 1 start wheel #1
         public int rollWheelsBackward01(int a, int b, int c, int d){
-                int count = 0;
+                count = 0;
                 for(int i = 0; i < 10; i++){
                         turnFirstWheelBackward();
                         count++;
@@ -713,7 +718,7 @@ public class Padlock{
 
         // Wheelie backward 1 start wheel #1 Steps 2
         public int rollWheelsBackward01b(int a, int b, int c, int d){
-                int count = 0;
+                count = 0;
                 for(int i = 0; i < 2; i++){
                         turnFirstWheelBackward();
                         count++;
@@ -748,7 +753,7 @@ public class Padlock{
 
         // Wheelie backward 2 start wheel #2
         public int rollWheelsBackward02(int a, int b, int c, int d){
-                int count = 0;
+                count = 0;
                 for(int i = 0; i < 10; i++){
                         turnSecondWheelBackward();
                         count++;
@@ -782,7 +787,7 @@ public class Padlock{
 
         // Wheelie backward 3 start wheel #3
         public int rollWheelsBackward03(int a, int b, int c, int d){
-                int count = 0;
+                count = 0;
                 for(int i = 0; i < 10; i++){
                         turnThirdWheelBackward();
                         count++;
@@ -816,7 +821,7 @@ public class Padlock{
 
         // Wheelie backward 4 start wheel #4
         public int rollWheelsBackward04(int a, int b, int c, int d){
-                int count = 0;
+                count = 0;
                 for(int i = 0; i < 10; i++){
                         turnFourthWheelBackward();
                         count++;
@@ -848,9 +853,43 @@ public class Padlock{
                 return count;
         }
 
+// Wheelie forwardBackward mix step 1
+    public int rollWheelsMix01(int a, int b, int c, int d){
+            count = 0;
+
+	    turnFirstWheelBackward();
+            count++;
+            if(combinationCheck(a, b, c, d)){
+                    saveState(count, statusAllWheels());
+            }
+            System.out.println("1:"+statusAllWheels());
+
+            turnSecondWheelBackward();
+            count++;
+            if(combinationCheck(a, b, c, d)){
+                    saveState(count, statusAllWheels());
+            }
+            System.out.println("2:"+statusAllWheels());
+                                                                                                                                                              turnThirdWheelForward();
+            count++;
+            if(combinationCheck(a, b, c, d)){
+                    saveState(count, statusAllWheels());
+            }
+            System.out.println("3:"+statusAllWheels());
+                                                                                                                                                                                                             
+            turnFourthWheelForward();
+            count++;
+            if(combinationCheck(a, b, c, d)){
+                    saveState(count, statusAllWheels());
+            }
+                                                                                                                                                              System.out.println("4:"+statusAllWheels());
+
+            return count;
+    }
+	
         // Wheelie forwardBackward mix steps 2
-        public int rollWheelsMix01(int a, int b, int c, int d){
-                int count = 0;
+        public int rollWheelsMix02(int a, int b, int c, int d){
+                count = 0;
                 for(int i = 0; i < 2; i++){
                         turnFirstWheelBackward();
                         count++;
@@ -882,6 +921,7 @@ public class Padlock{
                 return count;
         }
 
+	//saves count and current state on stack05
         public void saveState(int c, String state){
                 System.out.println("savestate:" + c  + " " + state);
                 stack05.add(c, state);
